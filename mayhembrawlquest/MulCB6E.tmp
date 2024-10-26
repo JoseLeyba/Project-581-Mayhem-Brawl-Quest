@@ -68,6 +68,29 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 icon = ExtResource("4_6qi13")
 
+[node name="Body" type="HBoxContainer" parent="PlayerSelection/Player1"]
+layout_mode = 2
+
+[node name="Previous" type="Button" parent="PlayerSelection/Player1/Body"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+icon = ExtResource("2_u5oyr")
+
+[node name="Body" type="TextureRect" parent="PlayerSelection/Player1/Body"]
+layout_mode = 2
+texture = ExtResource("3_ed70b")
+
+[node name="Next" type="Button" parent="PlayerSelection/Player1/Body"]
+custom_minimum_size = Vector2(15, 15)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+icon = ExtResource("4_6qi13")
+
 [node name="Select" type="Button" parent="PlayerSelection/Player1"]
 layout_mode = 2
 text = "Select"
@@ -106,15 +129,38 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 icon = ExtResource("4_6qi13")
 
+[node name="Body" type="HBoxContainer" parent="PlayerSelection/Player2"]
+layout_mode = 2
+
+[node name="Previous" type="Button" parent="PlayerSelection/Player2/Body"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+icon = ExtResource("2_u5oyr")
+
+[node name="Body" type="TextureRect" parent="PlayerSelection/Player2/Body"]
+layout_mode = 2
+texture = ExtResource("3_ed70b")
+
+[node name="Next" type="Button" parent="PlayerSelection/Player2/Body"]
+custom_minimum_size = Vector2(15, 15)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+icon = ExtResource("4_6qi13")
+
 [node name="Select" type="Button" parent="PlayerSelection/Player2"]
 layout_mode = 2
 text = "Select"
 
-[node name="Button" type="Button" parent="."]
+[node name="Back" type="Button" parent="."]
 offset_left = 1007.0
 offset_top = 595.0
 offset_right = 1119.0
 offset_bottom = 626.0
 text = "Back"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
