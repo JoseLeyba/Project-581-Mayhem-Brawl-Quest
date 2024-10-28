@@ -4,6 +4,7 @@ EECS 581 Project
 In the game, players control characters as they progress through levels, battling monsters, collecting power-ups, and facing off against powerful bosses. The objective is to overcome increasingly difficult challenges using strategic movement, combat, and collected abilities. The game features both single-player and two-player modes. In single-player, players face all challenges alone, while in two-player mode, they can either cooperate to defeat enemies together or compete for resources and power-ups. The game's mechanics dynamically adjust to each mode, ensuring balanced gameplay whether players team up or face each other, creating a varied and engaging experience for everyone.
 
 Prerequisites Before running this project, ensure you have Godot Engine installed  (version 4.3)
+Download the .zip file and extract, then using godot navigate to the directory mayhembrawlquest. Once registered in Godot press run!
 
 **Sources:**
 
