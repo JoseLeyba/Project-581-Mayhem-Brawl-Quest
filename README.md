@@ -18,5 +18,5 @@ Both packs sources were utilized to assist in the development of the game. This 
 
   The layout we used is inspired in the one showed in the "Start Your Game Creation Journey Today! (Godot beginner tutorial)" video, as this is our first experience using Godot it was extremely helpful to start off in the right direction and was used as a base for this sprint. Next sprint we'll design our own levels as one of the requirements.
   
-  -https://www.youtube.com/watch?v=5V9f3MT86M8&t=886s
+  - https://www.youtube.com/watch?v=5V9f3MT86M8&t=886s
 
