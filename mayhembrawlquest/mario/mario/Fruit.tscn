@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw84sg08ah4do"]
+
+[ext_resource type="Texture2D" uid="uid://cyur15k5kcbo3" path="res://Fruit.png" id="1_4i8ix"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gk2v4"]
+radius = 3.16228
+
+[node name="Area2D" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_gk2v4")
+
+[node name="Fruit" type="Sprite2D" parent="."]
+position = Vector2(1, 5)
+texture = ExtResource("1_4i8ix")
