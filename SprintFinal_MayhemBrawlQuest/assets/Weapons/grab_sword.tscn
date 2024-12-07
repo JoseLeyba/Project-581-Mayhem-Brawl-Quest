@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://bycp3atg7v3fw"]
+
+[ext_resource type="Texture2D" uid="uid://d1jeo2vmgwd4e" path="res://assets/Weapons/sword_grab.png" id="1_c5rrw"]
+
+[sub_resource type="GDScript" id="GDScript_jf5ox"]
+script/source = "extends Area2D
+
+# List of available weapons that the player can receive
+var available_weapons = [\"gun\", \"sword\", \"axe\", \"wand\"]
+
+# Signal to notify the player that they've picked up a weapon
+signal weapon_picked(weapon: String)
+
+# Called when the node enters the scene
+func _ready():
+	# Connects to the body_entered signal to detect when the player enters the pickup area
+	connect(\"body_entered\", self, \"_on_body_entered\")
+
+# When the player collides with the pickup
+func _on_body_entered(body):
+	# Checks if the body that collided is the player (assuming they have a CharacterBody2D type)
+	if body is CharacterBody2D:
+		# Randomly selects a weapon from the available_weapons list
+		var random_weapon = available_weapons[randi() % available_weapons.size()]
+		# Emits the weapon_picked signal to inform the player of the new weapon
+		emit_signal(\"weapon_picked\", random_weapon)
+		# Optionally, queue_free() to remove the pickup after collection
+		queue_free()
+"
+
+[node name="GrabSword" type="Node2D"]
+script = SubResource("GDScript_jf5ox")
+
+[node name="SwordGrab" type="Sprite2D" parent="."]
+position = Vector2(-2, 3)
+texture = ExtResource("1_c5rrw")
+
+[node name="Area2D" type="Area2D" parent="SwordGrab"]
+position = Vector2(2, -3)
