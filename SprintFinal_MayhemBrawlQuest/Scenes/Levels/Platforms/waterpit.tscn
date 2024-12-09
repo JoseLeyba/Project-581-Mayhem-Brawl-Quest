@@ -1,0 +1,141 @@
+[gd_scene load_steps=20 format=3 uid="uid://bp24i7wi23meh"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/Platforms/waterpit.gd" id="1_cyrt4"]
+[ext_resource type="Texture2D" uid="uid://cx0hnjxdw0y3j" path="res://assets/Platforms/WaterPit_Idle.png" id="1_n1af3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lrna"]
+atlas = ExtResource("1_n1af3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahyht"]
+atlas = ExtResource("1_n1af3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uswyu"]
+atlas = ExtResource("1_n1af3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jpya"]
+atlas = ExtResource("1_n1af3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll6c8"]
+atlas = ExtResource("1_n1af3")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5vrm"]
+atlas = ExtResource("1_n1af3")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8xxg"]
+atlas = ExtResource("1_n1af3")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3qpt"]
+atlas = ExtResource("1_n1af3")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgyhq"]
+atlas = ExtResource("1_n1af3")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_covp7"]
+atlas = ExtResource("1_n1af3")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8icf"]
+atlas = ExtResource("1_n1af3")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1ttm"]
+atlas = ExtResource("1_n1af3")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iy7ni"]
+atlas = ExtResource("1_n1af3")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvf2a"]
+atlas = ExtResource("1_n1af3")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ger8i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lrna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahyht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uswyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jpya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll6c8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5vrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8xxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3qpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgyhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_covp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8icf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1ttm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iy7ni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvf2a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n63bw"]
+size = Vector2(100, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5owx4"]
+size = Vector2(110, 102)
+
+[node name="waterpit" type="AnimatableBody2D"]
+script = ExtResource("1_cyrt4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ger8i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 3)
+shape = SubResource("RectangleShape2D_n63bw")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_5owx4")
+
+[node name="DamageTimer" type="Timer" parent="Area2D"]
+unique_name_in_owner = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Area2D/DamageTimer" to="." method="_on_damage_timer_timeout"]

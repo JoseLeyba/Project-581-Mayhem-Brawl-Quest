@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://7wry31ql46mh"]
+
+[ext_resource type="Texture2D" uid="uid://tq078cjepcbg" path="res://Free/Traps/Platforms/Grey Off.png" id="1_8efx2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvg7a"]
+size = Vector2(95, 20)
+
+[node name="Grey" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_8efx2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tvg7a")
