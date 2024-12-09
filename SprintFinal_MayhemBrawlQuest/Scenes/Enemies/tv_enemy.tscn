@@ -1,0 +1,166 @@
+[gd_scene load_steps=20 format=3 uid="uid://qu4bmossqy44"]
+
+[ext_resource type="Texture2D" uid="uid://bj3ijmnp8k718" path="res://assets/Enemies/New Piskel.png" id="1_evb0h"]
+[ext_resource type="Script" path="res://Scenes/Enemies/tv_enemy.gd" id="1_hm0yp"]
+[ext_resource type="Texture2D" uid="uid://ce8k0ubyr4rme" path="res://assets/Enemies/bosslvl1_walking.png" id="2_83fht"]
+[ext_resource type="AudioStream" uid="uid://nan2umchu5js" path="res://assets/Sounds/Dragon Hurt.wav" id="4_ptpsq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v03bk"]
+atlas = ExtResource("1_evb0h")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nue54"]
+atlas = ExtResource("1_evb0h")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brxvm"]
+atlas = ExtResource("1_evb0h")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3yy4"]
+atlas = ExtResource("1_evb0h")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iol0w"]
+atlas = ExtResource("1_evb0h")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe2c7"]
+atlas = ExtResource("1_evb0h")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3583"]
+atlas = ExtResource("2_83fht")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjw5t"]
+atlas = ExtResource("2_83fht")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mushe"]
+atlas = ExtResource("2_83fht")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hlttl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v03bk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nue54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brxvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3yy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iol0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe2c7")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3583")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjw5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mushe")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qc5ee"]
+size = Vector2(120, 163)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0q8cs"]
+size = Vector2(74, 202)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2tuq"]
+size = Vector2(138, 181)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpxed"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qq7r4"]
+bg_color = Color(0, 1, 0, 1)
+
+[node name="TV Enemy" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_hm0yp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_hlttl")
+animation = &"Walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, -0.5)
+shape = SubResource("RectangleShape2D_qc5ee")
+
+[node name="right" type="RayCast2D" parent="."]
+position = Vector2(48, -80)
+target_position = Vector2(40, 0)
+
+[node name="left" type="RayCast2D" parent="."]
+position = Vector2(48, -80)
+target_position = Vector2(-40, 0)
+
+[node name="PlayerDetectionLeft" type="Area2D" parent="."]
+
+[node name="Left" type="CollisionShape2D" parent="PlayerDetectionLeft"]
+visible = false
+position = Vector2(-37, -13.75)
+shape = SubResource("RectangleShape2D_0q8cs")
+
+[node name="PlayerDetectionRight" type="Area2D" parent="."]
+position = Vector2(74, 0)
+
+[node name="Right" type="CollisionShape2D" parent="PlayerDetectionRight"]
+visible = false
+position = Vector2(-37, -14)
+shape = SubResource("RectangleShape2D_0q8cs")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
+position = Vector2(-22, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(28, -1.5)
+shape = SubResource("RectangleShape2D_v2tuq")
+
+[node name="EnemyBar" type="ProgressBar" parent="Area2D"]
+unique_name_in_owner = true
+offset_left = -14.0
+offset_top = -80.0
+offset_right = 39.0
+offset_bottom = -75.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vpxed")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qq7r4")
+step = 1.0
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ptpsq")
+
+[node name="FireballTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="FireballTimer2" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="FireballTimer" to="." method="_on_fireball_timer_timeout"]
+[connection signal="timeout" from="FireballTimer2" to="." method="_on_fireball_timer_2_timeout"]

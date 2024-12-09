@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnob7ik652mx2"]
+
+[ext_resource type="Script" path="res://Scenes/Menu/manual.gd" id="1_dycqw"]
+[ext_resource type="Texture2D" uid="uid://ofmyoeyq4hpc" path="res://assets/Menu/Background.jpg" id="1_ic78t"]
+[ext_resource type="AudioStream" uid="uid://47s3t2np0n64" path="res://assets/Sounds/MenusMusic.wav" id="3_jaaln"]
+
+[node name="Manual" type="Node"]
+script = ExtResource("1_dycqw")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ic78t")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 61.0
+offset_right = 1050.0
+offset_bottom = 542.0
+
+[node name="Manual" type="Label" parent="."]
+offset_left = 468.0
+offset_top = 61.0
+offset_right = 686.0
+offset_bottom = 144.0
+size_flags_horizontal = 4
+size_flags_vertical = 2
+size_flags_stretch_ratio = 4.44
+theme_override_colors/font_color = Color(0.768627, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 60
+text = "Manual"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 105.0
+offset_top = 201.0
+offset_right = 1050.0
+offset_bottom = 389.0
+size_flags_vertical = 3
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Mayhem Brawl Quest is where  players control characters as they progress through levels, battling monsters, collecting power-ups, and facing off against powerful bosses. The objective is to overcome increasingly difficult challenges using strategic movement, combat, and collected abilities. The game features both single-player and two-player modes. In single-player, players face all challenges alone, while in two-player mode, they can either cooperate to defeat enemies together or compete for resources and power-ups. The game's mechanics dynamically adjust to each mode, ensuring balanced gameplay whether players team up or face each other, creating a varied and engaging experience for everyone"
+
+[node name="Back" type="Button" parent="."]
+offset_left = 951.0
+offset_top = 590.0
+offset_right = 1088.0
+offset_bottom = 621.0
+text = "Back"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jaaln")
+autoplay = true
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

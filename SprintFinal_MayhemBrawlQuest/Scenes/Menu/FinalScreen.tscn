@@ -1,0 +1,235 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjsxykxna6hwd"]
+
+[ext_resource type="Script" path="res://Scenes/Menu/final_screen.gd" id="1_2cedb"]
+[ext_resource type="Texture2D" uid="uid://ofmyoeyq4hpc" path="res://assets/Menu/Background.jpg" id="1_kca47"]
+[ext_resource type="AudioStream" uid="uid://47s3t2np0n64" path="res://assets/Sounds/MenusMusic.wav" id="3_q5lci"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_2cedb")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kca47")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 176.0
+offset_top = 64.0
+offset_right = 949.0
+offset_bottom = 453.0
+
+[node name="Victory" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.768627, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 60
+text = "YOU FINISHED!!!"
+horizontal_alignment = 1
+
+[node name="SinglePlayerMode" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+
+[node name="Player1" type="VBoxContainer" parent="VBoxContainer/SinglePlayerMode"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="Player1" type="Label" parent="VBoxContainer/SinglePlayerMode/Player1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.768627, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 30
+text = "Player 1 Stats"
+horizontal_alignment = 1
+
+[node name="Health" type="Label" parent="VBoxContainer/SinglePlayerMode/Player1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Health: "
+horizontal_alignment = 1
+
+[node name="Kills" type="Label" parent="VBoxContainer/SinglePlayerMode/Player1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Kills"
+horizontal_alignment = 1
+
+[node name="Damage" type="Label" parent="VBoxContainer/SinglePlayerMode/Player1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Damage Taken: "
+horizontal_alignment = 1
+
+[node name="TotalHealth" type="Label" parent="VBoxContainer/SinglePlayerMode/Player1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Total Health:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TotalKills" type="Label" parent="VBoxContainer/SinglePlayerMode/Player1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Total Kills:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TotalDamage" type="Label" parent="VBoxContainer/SinglePlayerMode/Player1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Total Damage:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MultiplayerMode" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Player1" type="VBoxContainer" parent="VBoxContainer/MultiplayerMode"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+
+[node name="Player1" type="Label" parent="VBoxContainer/MultiplayerMode/Player1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.768627, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 30
+text = "Player 1 Stats"
+horizontal_alignment = 1
+
+[node name="HealthPlayer1" type="Label" parent="VBoxContainer/MultiplayerMode/Player1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Health: "
+horizontal_alignment = 1
+
+[node name="KillsPlayer1" type="Label" parent="VBoxContainer/MultiplayerMode/Player1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Kills"
+horizontal_alignment = 1
+
+[node name="DamagePlayer1" type="Label" parent="VBoxContainer/MultiplayerMode/Player1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Damage Taken: "
+horizontal_alignment = 1
+
+[node name="TotalHealthPlayer1" type="Label" parent="VBoxContainer/MultiplayerMode/Player1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Total Health Points: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TotalKillsPlayer1" type="Label" parent="VBoxContainer/MultiplayerMode/Player1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Total Kills:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TotalDamagePlayer1" type="Label" parent="VBoxContainer/MultiplayerMode/Player1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Total Damage Taken:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2" type="VBoxContainer" parent="VBoxContainer/MultiplayerMode"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+
+[node name="Player2" type="Label" parent="VBoxContainer/MultiplayerMode/Player2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.768627, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 30
+text = "Player 2 Stats"
+horizontal_alignment = 1
+
+[node name="HealthPlayer2" type="Label" parent="VBoxContainer/MultiplayerMode/Player2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Health: "
+horizontal_alignment = 1
+
+[node name="KillsPlayer2" type="Label" parent="VBoxContainer/MultiplayerMode/Player2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Kills"
+horizontal_alignment = 1
+
+[node name="DamagePlayer2" type="Label" parent="VBoxContainer/MultiplayerMode/Player2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Damage Taken: "
+horizontal_alignment = 1
+
+[node name="TotalHealthPlayer2" type="Label" parent="VBoxContainer/MultiplayerMode/Player2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Total Health Points:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TotalKillsPlayer2" type="Label" parent="VBoxContainer/MultiplayerMode/Player2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Total Kills:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TotalDamagePlayer2" type="Label" parent="VBoxContainer/MultiplayerMode/Player2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Total Damage Taken:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reply" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Restart Levels"
+
+[node name="MainMenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit to Main Menu"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_q5lci")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/Reply" to="." method="_on_reply_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

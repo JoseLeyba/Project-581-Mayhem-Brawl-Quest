@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://boug8cjcqisjw"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/bat_enemy.gd" id="1_msbfg"]
+[ext_resource type="Texture2D" uid="uid://wmxxc4dqade" path="res://Free/Enemies/Bat/Flying (46x30).png" id="2_33o86"]
+[ext_resource type="AudioStream" uid="uid://3mn0xk3morip" path="res://assets/Sounds/Enemy Hurt.wav" id="3_3co3c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l37hb"]
+atlas = ExtResource("2_33o86")
+region = Rect2(0, 0, 46, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tso2"]
+atlas = ExtResource("2_33o86")
+region = Rect2(46, 0, 46, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g2j7"]
+atlas = ExtResource("2_33o86")
+region = Rect2(92, 0, 46, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6gou"]
+atlas = ExtResource("2_33o86")
+region = Rect2(138, 0, 46, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mcjy"]
+atlas = ExtResource("2_33o86")
+region = Rect2(184, 0, 46, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi8vf"]
+atlas = ExtResource("2_33o86")
+region = Rect2(230, 0, 46, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gax1d"]
+atlas = ExtResource("2_33o86")
+region = Rect2(276, 0, 46, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0lp2b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l37hb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tso2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0g2j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6gou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mcjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi8vf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gax1d")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 20.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nx0p4"]
+radius = 13.0
+
+[node name="bat_enemy" type="CharacterBody2D"]
+script = ExtResource("1_msbfg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_0lp2b")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_nx0p4")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_3co3c")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1q8ghf1ewokq"]
+
+[ext_resource type="Script" path="res://Scenes/Menu/settings_menu.gd" id="1_beexj"]
+[ext_resource type="Texture2D" uid="uid://ofmyoeyq4hpc" path="res://assets/Menu/Background.jpg" id="1_s0aa3"]
+[ext_resource type="Texture2D" uid="uid://btmtsbtiub2uf" path="res://assets/Menu/Controls.jpg" id="3_45jrd"]
+[ext_resource type="PackedScene" uid="uid://b1tb37xm4wdds" path="res://Scenes/Menu/volume_slider.tscn" id="3_dk8vl"]
+[ext_resource type="AudioStream" uid="uid://cqya1erke5onj" path="res://assets/Sounds/ArenaSong.wav" id="4_euu03"]
+
+[node name="Settings" type="Node"]
+script = ExtResource("1_beexj")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_s0aa3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(700, 100)
+offset_left = 215.0
+offset_top = 424.0
+offset_right = 915.0
+offset_bottom = 553.0
+
+[node name="Music Volume" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.603922, 0, 0, 1)
+text = "Music Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="music" parent="VBoxContainer" instance=ExtResource("3_dk8vl")]
+layout_mode = 2
+bus_name = "music"
+
+[node name="Sound Effects" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.603922, 0, 0, 1)
+text = "Sound Effects Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sfx" parent="VBoxContainer" instance=ExtResource("3_dk8vl")]
+layout_mode = 2
+bus_name = "sfx"
+
+[node name="Manual" type="Button" parent="VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(540, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Manual"
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(540, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back"
+
+[node name="Keyboard Controls" type="TextureRect" parent="."]
+offset_left = 177.0
+offset_top = 43.0
+offset_right = 1002.0
+offset_bottom = 388.0
+texture = ExtResource("3_45jrd")
+
+[node name="BackGroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_euu03")
+autoplay = true
+bus = &"music"
+playback_type = 1
+
+[connection signal="pressed" from="VBoxContainer/Manual" to="." method="_on_manual_pressed"]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]
