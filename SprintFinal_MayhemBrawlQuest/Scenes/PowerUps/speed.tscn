@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://q2vlw355lyav"]
+
+[ext_resource type="Script" path="res://Scenes/PowerUps/speed.gd" id="1_lk0u5"]
+[ext_resource type="Texture2D" uid="uid://cjpdq1w2lgoua" path="res://assets/Powerups/speed_idle.png" id="1_sji5r"]
+[ext_resource type="AudioStream" uid="uid://fxqmacgds4qc" path="res://assets/Sounds/Pickup.wav" id="3_kfncx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88jkc"]
+atlas = ExtResource("1_sji5r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj8ya"]
+atlas = ExtResource("1_sji5r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo6bv"]
+atlas = ExtResource("1_sji5r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11qpd"]
+atlas = ExtResource("1_sji5r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5yit"]
+atlas = ExtResource("1_sji5r")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np827"]
+atlas = ExtResource("1_sji5r")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vfgq"]
+atlas = ExtResource("1_sji5r")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s7ypo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88jkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj8ya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo6bv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11qpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5yit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np827")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vfgq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2eurb"]
+size = Vector2(20, 18)
+
+[node name="Speed" type="Area2D"]
+script = ExtResource("1_lk0u5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_s7ypo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_2eurb")
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_kfncx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

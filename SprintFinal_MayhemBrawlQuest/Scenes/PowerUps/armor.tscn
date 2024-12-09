@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://cm4uf3050rhvr"]
+
+[ext_resource type="Script" path="res://Scenes/PowerUps/armor.gd" id="1_tskpm"]
+[ext_resource type="Texture2D" uid="uid://dhupk5nlyr34w" path="res://assets/Powerups/Armor_Idle.png" id="2_dhhb2"]
+[ext_resource type="AudioStream" uid="uid://fxqmacgds4qc" path="res://assets/Sounds/Pickup.wav" id="3_1m2iu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f31ud"]
+atlas = ExtResource("2_dhhb2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d88ch"]
+atlas = ExtResource("2_dhhb2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maitj"]
+atlas = ExtResource("2_dhhb2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cabui"]
+atlas = ExtResource("2_dhhb2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwx20"]
+atlas = ExtResource("2_dhhb2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfwta"]
+atlas = ExtResource("2_dhhb2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cybfk"]
+atlas = ExtResource("2_dhhb2")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jjxr5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f31ud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d88ch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maitj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cabui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwx20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfwta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cybfk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56kqx"]
+size = Vector2(50, 53)
+
+[node name="Armor" type="Area2D"]
+script = ExtResource("1_tskpm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_jjxr5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 3.5)
+shape = SubResource("RectangleShape2D_56kqx")
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_1m2iu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

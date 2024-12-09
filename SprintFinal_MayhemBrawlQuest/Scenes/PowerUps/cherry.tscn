@@ -1,0 +1,153 @@
+[gd_scene load_steps=23 format=3 uid="uid://b04a5nrwt461"]
+
+[ext_resource type="Texture2D" uid="uid://byjer5eb7bkxo" path="res://Free/Items/Fruits/Cherries.png" id="1_0jme6"]
+[ext_resource type="Script" path="res://Scenes/PowerUps/cherry.gd" id="1_mgloc"]
+[ext_resource type="AudioStream" uid="uid://fxqmacgds4qc" path="res://assets/Sounds/Pickup.wav" id="3_stav8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2njnu"]
+radius = 36.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chyy0"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46k8v"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkd85"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5g7r"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxv8b"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kt74"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5ag1"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fti0q"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36bsd"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_den8l"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u1k5"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lstwb"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ultc7"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8wa4"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bo3d"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_no2nd"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imeyb"]
+atlas = ExtResource("1_0jme6")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c816n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chyy0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46k8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkd85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5g7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxv8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kt74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5ag1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fti0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36bsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_den8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u1k5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lstwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ultc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8wa4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bo3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_no2nd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imeyb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Cherry" type="Area2D"]
+script = ExtResource("1_mgloc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2njnu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+scale = Vector2(3.5625, 3.5625)
+sprite_frames = SubResource("SpriteFrames_c816n")
+frame_progress = 0.541683
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_stav8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

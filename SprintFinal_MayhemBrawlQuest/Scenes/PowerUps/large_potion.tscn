@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://yvqrasmea533"]
+
+[ext_resource type="Script" path="res://Scenes/PowerUps/large_potion.gd" id="1_j4ifn"]
+[ext_resource type="Texture2D" uid="uid://cph6jkiu0pfue" path="res://assets/Powerups/Large_Potion_Idle.png" id="2_tjia2"]
+[ext_resource type="AudioStream" uid="uid://fxqmacgds4qc" path="res://assets/Sounds/Pickup.wav" id="3_bui5s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsu3c"]
+atlas = ExtResource("2_tjia2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdlkb"]
+atlas = ExtResource("2_tjia2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll2nb"]
+atlas = ExtResource("2_tjia2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1k2o"]
+atlas = ExtResource("2_tjia2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvhvb"]
+atlas = ExtResource("2_tjia2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8imw1"]
+atlas = ExtResource("2_tjia2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u68sf"]
+atlas = ExtResource("2_tjia2")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pee5t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsu3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdlkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll2nb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1k2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvhvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8imw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u68sf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agve3"]
+size = Vector2(20, 25)
+
+[node name="LargePotion" type="Area2D"]
+script = ExtResource("1_j4ifn")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pee5t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_agve3")
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bui5s")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

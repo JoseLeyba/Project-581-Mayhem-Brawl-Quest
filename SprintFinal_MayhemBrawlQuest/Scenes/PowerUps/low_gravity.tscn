@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://b83qpmtfj652c"]
+
+[ext_resource type="Script" path="res://Scenes/PowerUps/low_gravity.gd" id="1_m0la7"]
+[ext_resource type="Texture2D" uid="uid://8h2rvxtorcgf" path="res://assets/Powerups/Low_Gravity_Potion_Idle.png" id="1_scqy2"]
+[ext_resource type="AudioStream" uid="uid://fxqmacgds4qc" path="res://assets/Sounds/Pickup.wav" id="3_8l8we"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sln7l"]
+atlas = ExtResource("1_scqy2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy8av"]
+atlas = ExtResource("1_scqy2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22tv2"]
+atlas = ExtResource("1_scqy2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji600"]
+atlas = ExtResource("1_scqy2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2xqj"]
+atlas = ExtResource("1_scqy2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07m08"]
+atlas = ExtResource("1_scqy2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjqpk"]
+atlas = ExtResource("1_scqy2")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i628c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sln7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy8av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22tv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ji600")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2xqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07m08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjqpk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_886fj"]
+size = Vector2(68, 75)
+
+[node name="Low Gravity" type="Area2D"]
+script = ExtResource("1_m0la7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_i628c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 2.5)
+shape = SubResource("RectangleShape2D_886fj")
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8l8we")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

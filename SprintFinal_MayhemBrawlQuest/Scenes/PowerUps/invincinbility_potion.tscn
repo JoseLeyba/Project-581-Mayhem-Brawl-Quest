@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://dax17en2h0br3"]
+
+[ext_resource type="Script" path="res://Scenes/PowerUps/invincinbility_potion.gd" id="1_x5xna"]
+[ext_resource type="Texture2D" uid="uid://b5g06g2om5mdh" path="res://assets/Powerups/Invincinbility_Potion_Idle.png" id="2_ylfvb"]
+[ext_resource type="AudioStream" uid="uid://fxqmacgds4qc" path="res://assets/Sounds/Pickup.wav" id="3_hs5ph"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdsjv"]
+atlas = ExtResource("2_ylfvb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moy8x"]
+atlas = ExtResource("2_ylfvb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j31oe"]
+atlas = ExtResource("2_ylfvb")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojyjl"]
+atlas = ExtResource("2_ylfvb")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_la71v"]
+atlas = ExtResource("2_ylfvb")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bptoh"]
+atlas = ExtResource("2_ylfvb")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt3i1"]
+atlas = ExtResource("2_ylfvb")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hj2ac"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdsjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moy8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j31oe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojyjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_la71v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bptoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt3i1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kdnc"]
+size = Vector2(20, 23)
+
+[node name="InvincinbilityPotion" type="Area2D"]
+script = ExtResource("1_x5xna")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_hj2ac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_3kdnc")
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hs5ph")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

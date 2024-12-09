@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://douefldp683qp"]
+
+[ext_resource type="Texture2D" uid="uid://bhd4gje63a6xm" path="res://assets/Powerups/triple_jump_idle.png" id="1_1gkrr"]
+[ext_resource type="Script" path="res://Scenes/PowerUps/jump_speed.gd" id="1_ted1b"]
+[ext_resource type="AudioStream" uid="uid://fxqmacgds4qc" path="res://assets/Sounds/Pickup.wav" id="3_arqlx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udsp7"]
+atlas = ExtResource("1_1gkrr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kljuw"]
+atlas = ExtResource("1_1gkrr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emqfh"]
+atlas = ExtResource("1_1gkrr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwhru"]
+atlas = ExtResource("1_1gkrr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6300h"]
+atlas = ExtResource("1_1gkrr")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4h67"]
+atlas = ExtResource("1_1gkrr")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkeu0"]
+atlas = ExtResource("1_1gkrr")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ayf1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udsp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kljuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emqfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwhru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6300h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4h67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkeu0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yq8bn"]
+size = Vector2(53, 47)
+
+[node name="Jump Speed" type="Area2D"]
+script = ExtResource("1_ted1b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ayf1q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 8.5)
+shape = SubResource("RectangleShape2D_yq8bn")
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_arqlx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
